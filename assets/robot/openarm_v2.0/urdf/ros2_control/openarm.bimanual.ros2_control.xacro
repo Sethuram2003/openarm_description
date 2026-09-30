@@ -32,9 +32,10 @@ limitations under the License.
         <hardware>
           <param name="arm_type">${arm_type}</param>
           <xacro:if value="${use_fake_hardware}">
-            <plugin>mock_components/GenericSystem</plugin>
-            <param name="fake_sensor_commands">${fake_sensor_commands}</param>
-            <param name="state_following_offset">0.0</param>
+            <plugin>topic_based_ros2_control/TopicBasedSystem</plugin>
+            <param name="joint_commands_topic">/isaac_joint_command</param>
+            <param name="joint_states_topic">/isaac_joint_states</param>
+            <param name="sum_wrapped_joint_states">true</param>
           </xacro:if>
           <xacro:unless value="${use_fake_hardware}">
             <plugin>openarm_hardware/OpenArmHW</plugin>
@@ -104,9 +105,10 @@ limitations under the License.
         <hardware>
           <param name="arm_type">${arm_type}</param>
           <xacro:if value="${use_fake_hardware}">
-            <plugin>mock_components/GenericSystem</plugin>
-            <param name="fake_sensor_commands">${fake_sensor_commands}</param>
-            <param name="state_following_offset">0.0</param>
+              <plugin>topic_based_ros2_control/TopicBasedSystem</plugin>
+              <param name="joint_commands_topic">/isaac_joint_command</param>
+              <param name="joint_states_topic">/isaac_joint_states</param>
+              <param name="sum_wrapped_joint_states">true</param>
           </xacro:if>
           <xacro:unless value="${use_fake_hardware}">
             <plugin>openarm_hardware/OpenArmHW</plugin>
